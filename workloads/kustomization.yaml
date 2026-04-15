@@ -8,4 +8,4 @@ resources:
 - cephfs/write/nocache
 - cephfs/read/cache
 - cephfs/read/nocache
-# - vms
+- vms
