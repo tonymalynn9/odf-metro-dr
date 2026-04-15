@@ -1,96 +1,96 @@
-apiVersion: kubevirt.io/v1
-kind: VirtualMachine
-metadata:
-  name: vm-win2k22
-spec:
-  dataVolumeTemplates:
-  - apiVersion: cdi.kubevirt.io/v1beta1
-    kind: DataVolume
-    metadata:
-      name: vm-win2k22
-      labels:
-        dr: active
-    spec:
-      sourceRef:
-        kind: DataSource
-        name: win2k22
-        namespace: openshift-virtualization-os-images
-      storage:
-        resources:
-          requests:
-            storage: 30Gi
-  runStrategy: RerunOnFailure
-  template:
-    metadata:
-      annotations:
-        vm.kubevirt.io/flavor: medium
-        vm.kubevirt.io/os: windows2k22
-        vm.kubevirt.io/workload: server
-    spec:
-      architecture: amd64
-      domain:
-        clock:
-          timer:
-            hpet:
-              present: false
-            hyperv: {}
-            pit:
-              tickPolicy: delay
-            rtc:
-              tickPolicy: catchup
-          utc: {}
-        cpu:
-          cores: 1
-          sockets: 1
-          threads: 1
-        devices:
-          disks:
-          - disk:
-              bus: sata
-            name: rootdisk
-          inputs:
-          - bus: usb
-            name: tablet
-            type: tablet
-          interfaces:
-          - masquerade: {}
-            model: e1000e
-            name: default
-          logSerialConsole: false
-          tpm: {}
-        features:
-          acpi: {}
-          apic: {}
-          hyperv:
-            frequencies: {}
-            ipi: {}
-            reenlightenment: {}
-            relaxed: {}
-            reset: {}
-            runtime: {}
-            spinlocks:
-              spinlocks: 8191
-            synic: {}
-            synictimer:
-              direct: {}
-            tlbflush: {}
-            vapic: {}
-            vpindex: {}
-          smm: {}
-        firmware:
-          bootloader:
-            efi:
-              secureBoot: true
-        machine:
-          type: pc-q35-rhel9.4.0
-        memory:
-          guest: 4Gi
-        resources: {}
-      networks:
-      - name: default
-        pod: {}
-      terminationGracePeriodSeconds: 3600
-      volumes:
-      - dataVolume:
-          name: vm-win2k22
-        name: rootdisk
+# apiVersion: kubevirt.io/v1
+# kind: VirtualMachine
+# metadata:
+#   name: vm-win2k22
+# spec:
+#   dataVolumeTemplates:
+#   - apiVersion: cdi.kubevirt.io/v1beta1
+#     kind: DataVolume
+#     metadata:
+#       name: vm-win2k22
+#       labels:
+#         dr: active
+#     spec:
+#       sourceRef:
+#         kind: DataSource
+#         name: win2k22
+#         namespace: openshift-virtualization-os-images
+#       storage:
+#         resources:
+#           requests:
+#             storage: 30Gi
+#   runStrategy: RerunOnFailure
+#   template:
+#     metadata:
+#       annotations:
+#         vm.kubevirt.io/flavor: medium
+#         vm.kubevirt.io/os: windows2k22
+#         vm.kubevirt.io/workload: server
+#     spec:
+#       architecture: amd64
+#       domain:
+#         clock:
+#           timer:
+#             hpet:
+#               present: false
+#             hyperv: {}
+#             pit:
+#               tickPolicy: delay
+#             rtc:
+#               tickPolicy: catchup
+#           utc: {}
+#         cpu:
+#           cores: 1
+#           sockets: 1
+#           threads: 1
+#         devices:
+#           disks:
+#           - disk:
+#               bus: sata
+#             name: rootdisk
+#           inputs:
+#           - bus: usb
+#             name: tablet
+#             type: tablet
+#           interfaces:
+#           - masquerade: {}
+#             model: e1000e
+#             name: default
+#           logSerialConsole: false
+#           tpm: {}
+#         features:
+#           acpi: {}
+#           apic: {}
+#           hyperv:
+#             frequencies: {}
+#             ipi: {}
+#             reenlightenment: {}
+#             relaxed: {}
+#             reset: {}
+#             runtime: {}
+#             spinlocks:
+#               spinlocks: 8191
+#             synic: {}
+#             synictimer:
+#               direct: {}
+#             tlbflush: {}
+#             vapic: {}
+#             vpindex: {}
+#           smm: {}
+#         firmware:
+#           bootloader:
+#             efi:
+#               secureBoot: true
+#         machine:
+#           type: pc-q35-rhel9.4.0
+#         memory:
+#           guest: 4Gi
+#         resources: {}
+#       networks:
+#       - name: default
+#         pod: {}
+#       terminationGracePeriodSeconds: 3600
+#       volumes:
+#       - dataVolume:
+#           name: vm-win2k22
+#         name: rootdisk
