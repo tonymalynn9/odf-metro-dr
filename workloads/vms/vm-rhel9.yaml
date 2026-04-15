@@ -11,7 +11,7 @@ spec:
       spec:
         sourceRef:
           kind: DataSource
-          name: rhel9 
+          name: rhel9.6-image 
           namespace: openshift-virtualization-os-images 
         storage: {}
     - metadata:
@@ -26,7 +26,7 @@ spec:
           resources:
             requests:
               storage: 5Gi
-          storageClassName: ocs-external-storagecluster-ceph-rbd-virtualization
+          storageClassName: ocs-external-storagecluster-ceph-rbd
   instancetype:
     name: o1.medium 
   preference:
@@ -44,10 +44,10 @@ spec:
             name: vm-rhel9-data
           name: data
         - cloudInitNoCloud:
-            userData: |-
+            userData: |
               #cloud-config
-              user: cloud-user
-              password: redhat
               chpasswd:
                 expire: false
+              password: qt7y-iauh-kkl8
+              user: rhel
           name: cloudinitdisk
