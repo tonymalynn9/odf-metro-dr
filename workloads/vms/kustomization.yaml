@@ -1,4 +1,4 @@
 ---
 resources:
 - vm-rhel9.yaml
-- vm-windows2k22.yaml
+# - vm-windows2k22.yaml
