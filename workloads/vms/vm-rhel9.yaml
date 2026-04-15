@@ -28,7 +28,7 @@ spec:
               storage: 5Gi
           storageClassName: ocs-external-storagecluster-ceph-rbd-virtualization
   instancetype:
-    name: u1.medium 
+    name: o1.medium 
   preference:
     name: rhel.9 
   runStrategy: RerunOnFailure
