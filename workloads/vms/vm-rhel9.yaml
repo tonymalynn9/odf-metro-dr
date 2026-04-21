@@ -11,7 +11,7 @@ spec:
       spec:
         sourceRef:
           kind: DataSource
-          name: rhel9.6-image 
+          name: rhel9
           namespace: openshift-virtualization-os-images 
         storage: {}
     - metadata:
